@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>First!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="/css/bootstrap.cosmo.min.css" rel="stylesheet">
+    <!--page script-->
+    <script type="text/javascript" src="/js/game.join.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-8">
+                    <h1>First! <small class="hidden-xs hidden-sm">Do you have the sharpest eyes and the fastest fingers?</small></h1>
+                </div><!--brand-->
+                <div class="col-xs-8 col-sm-offset-4 col-sm-4 col-md-offset-1 col-md-3">
+                    <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#modal-joinGame">Start/Join a Game</button>
+                </div><!--start/join game button-->
+            </div>
+        </div><!--page header-->
+        <div class="text-center">
+            <div id="theme" class="row">
+                <h3>Spot the <span class="label label-primary">panda</span> in the <span class="label label-default">dairy cow</span> s</h3>
+            </div><!--demo game theme-->
+            <br/>
+            <div id="board" class="row">
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts4.mm.bing.net/th?id=H.4631054004193264&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts2.mm.bing.net/th?id=H.4611198332699215&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts2.mm.bing.net/th?id=H.4984211940706737&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts3.mm.bing.net/th?id=H.4679015883344610&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts4.mm.bing.net/th?id=H.5044431656452227&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts4.mm.bing.net/th?id=H.4960628257394013&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts3.mm.bing.net/th?id=H.5050234173522037&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a data-toggle="modal" data-target="#modal-joinGame" class="col-md-2 col-xs-4" href="#"><img id="prize" class="img-thumbnail img-responsive" src="http://ts3.mm.bing.net/th?id=H.4547100294775678&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts2.mm.bing.net/th?id=H.4703162206519696&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts4.mm.bing.net/th?id=H.4740257822147218&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts3.mm.bing.net/th?id=H.4826715515848844&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts2.mm.bing.net/th?id=H.5051484007500542&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts2.mm.bing.net/th?id=H.4707427107603339&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts2.mm.bing.net/th?id=H.4726539707220659&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts3.mm.bing.net/th?id=H.4568162774355105&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts3.mm.bing.net/th?id=H.4835288279222985&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts4.mm.bing.net/th?id=H.4885238718596783&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+                <a class="col-md-2 col-xs-4" href="#"><img class="img-thumbnail img-responsive" src="http://ts2.mm.bing.net/th?id=H.4955998299949061&w=195&h=195&c=7&rs=1&pid=1.7"/></a>
+            </div><!--demo game board-->
+            <br/>
+        </div><!--page content-->
+        <div class="modal fade" id="modal-joinGame">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Start/Join a Game</h3>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Compete with your friends to see who has the sharpest eyes and the fastest fingers!</p>
+                        <button id="btn-newGame" type="button" class="btn btn-success btn-lg btn-block">Start a new game</button>
+                        <h3>OR</h3>
+                        <form id="form-joinGame" role="form">
+                            <input type="text" class="form-control" name="gameId" placeholder="Game ID"/><br/>
+                            <input type="submit" class="btn btn-success btn-lg btn-block" value="Join a game"/>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div><!--container-->
+</body>
+</html>

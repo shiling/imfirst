@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>First!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--site scripts-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link href="/css/bootstrap.cosmo.min.css" rel="stylesheet">
+    <!--page script-->
+    <script type="text/javascript" src="/js/game.join.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>First! <small>Do you have the sharpest eyes and the fastest fingers?</small></h1>
+                </div><!--brand-->
+            </div>
+        </div><!--page header-->
+        <div class="text-center col-md-4 col-md-offset-4">
+            <div class="alert alert-danger">Sorry! <%=error%></div>
+            <div class="well">
+                <h3>Maybe you could:</h3>
+                <button id="btn-newGame" type="button" class="btn btn-success btn-lg btn-block">Start a new game</button>
+                <h3>OR</h3>
+                <form id="form-joinGame" role="form">
+                    <input type="text" class="form-control" name="gameId" placeholder="Game ID"/><br/>
+                    <input type="submit" class="btn btn-success btn-lg btn-block" value="Join a game"/>
+                </form>
+            </div>
+        </div><!--page content-->
+    </div><!--container-->
+</body>
+</html>

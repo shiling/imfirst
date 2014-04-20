@@ -1,0 +1,162 @@
+<html>
+<head>
+    <title>First!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--site scripts-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link href="/css/bootstrap.cosmo.min.css" rel="stylesheet">
+    <!--page scripts-->
+    <script type="text/javascript" src="/js/jquery.cookie.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/game.play.js"></script>
+    <script type="text/javascript">
+        setGameId("<%=gameId%>");
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="page-header hidden-xs hidden-sm">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>First! <small>Do you have the sharpest eyes and the fastest fingers?</small></h1>
+                </div><!--brand-->
+            </div>
+        </div><!--page header-->
+
+        <div class="text-center">
+            <div id="theme" class="row">
+                <h3>Spot the <span class="label label-primary subject">panda</span> in the <span class="label label-default background">dairy cow</span> s</h3>
+            </div><!-- game theme-->
+            <br/>
+            <div id="board" class="row">
+                
+            </div><!-- game board-->
+            <br/>
+        </div><!--page content-->
+
+        <div id="modal-nickname" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Sweet! You're in the game!</h4>
+                        <p>Ask your friends to join with this Game ID: <span class="label label-warning"><%=gameId%></span></p>
+                    </div><!-- modal-players: header -->
+                    <div class="modal-body">
+                        <h4>Now give yourself a name:</h4>
+                        <form id="form-nickname" role="form">
+                            <input type="text" class="form-control" name="nickname" placeholder="hawkeye"/><br/>
+                            <input type="submit" class="btn btn-success btn-lg" value="Set Nickname"/>
+                        </form>
+                    </div><!-- modal-nickname: body -->
+                </div><!-- modal-nickname: content -->
+            </div><!--modal-nickname: dialog-->
+        </div><!-- modal-nickname -->
+
+        <div id="modal-players" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Waiting for players...</h4>
+                        <p>Ask your friends to join with this Game ID: <span class="label label-warning"><%=gameId%></span></p>
+                    </div><!-- modal-players: header -->
+                    <div class="modal-body">
+                        <h4>Players:</h4>
+                        <ul class="list-group" id="players"></ul>
+                        <br/>
+                        <div class="host-player">
+                            <p>You are the host, when everyone are here, press start:</p>
+                            <button id="btn-startGame" type="button" class="btn btn-success btn-lg">Start Game</button>
+                        </div>
+                        <div class="non-host-player">
+                            <p>The host will start the game when everyone is here.</p>
+                        </div>
+                    </div><!-- modal-players: body -->
+                </div><!-- modal-players: content -->
+            </div><!--modal-players: dialog-->
+        </div><!-- modal-players -->
+
+        <div id="modal-round" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4>The theme is:</h4>
+                        <h3 class="well">Spot the <span class="label label-primary subject">panda</span> in the <span class="label label-default background">dairy cow</span> s</h3>
+                        <div id="loading">
+                            <div id="progress-text">Loading...</div>
+                            <div class="progress">
+                                <div id="progress-imagesLoaded" class="progress-bar" style="width:0%"></div>
+                            </div>
+                        </div>
+                        <div id="loaded">
+                            <h1><b>Get Ready </br></br>in 
+                                <span id="countdown" class="label label-danger" style="font-size:40px">3</span> s!
+                            </b></h1>
+                        </div>
+                        <br/>
+                        <button id="btn-changeTheme" type="button" class="btn btn-info">Wait! Change the theme!</button>
+                    </div><!-- modal-round: body -->
+                </div><!-- modal-round: content -->
+            </div><!--modal-round: dialog-->
+        </div><!-- modal-round -->
+
+        <div id="modal-changingTheme" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form id="form-changeTheme" class="form-inline" role="form">
+                            <h4>Choose a Theme:</h4>
+                            <p class="well well-sm" style="font-size:15px;line-height:4">
+                                <b>
+                                Spot the  <input type="text" class="form-control" style="display:inline;width:50%" name="subject" placeholder="panda"/> in<br/>
+                                the <input type="text" class="form-control" style="display:inline;width:50%" name="background" placeholder="dairy cow"/> s
+                                </b>
+                            </p>
+                            <button type="button" class="btn btn-warning">Randomise!</button>
+                            <input type="submit" class="btn btn-success" value="Go!"/>
+                        </form>
+                    </div><!-- modal-changeTheme: body -->
+                </div><!-- modal-changeTheme: content -->
+            </div><!--modal-changeTheme: dialog-->
+        </div><!-- modal-changeTheme -->
+
+        <div id="modal-waitForTheme" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4>Hang on! <span id="playerChangingTheme"></span> is changing the theme...</h4>
+                    </div><!-- modal-waitForTheme: body -->
+                </div><!-- modal-waitForTheme: content -->
+            </div><!--modal-waitForTheme: dialog-->
+        </div><!-- modal-waitForTheme -->
+
+        <div id="modal-scores" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span id="round-winner">shiling</span> won this round!</div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"><h4>Scores</h4></div>
+                            <div id="scores" class="panel-body">
+                            </div>
+                        </div>
+                    </div><!-- modal-scores: body -->
+                </div><!-- modal-scores: content -->
+            </div><!--modal-scores: dialog-->
+        </div><!-- modal-scores -->
+
+        <div id="modal-playerLeft" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <span id="playerLeft" class="text-danger"></span> left the game.
+                        <span id="lastPlayer" hidden>Aw. You're the only one left. :(</span>
+                    </div><!-- modal-playerLeft: body -->
+                </div><!-- modal-playerLeft: content -->
+            </div><!--modal-playerLeft: dialog-->
+        </div><!-- modal-playerLeft -->
+
+    </div><!--container-->
+</body>
+</html>

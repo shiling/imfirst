@@ -1,0 +1,19 @@
+{
+    "name": "imfirst",
+    "subdomain": "imfirst",
+    "version": "0.0.1-5",
+    "scripts": {
+        "start": "app.js"
+    },
+    "engines": {
+        "node": ">=0.8"
+    },
+    "dependencies": {
+        "express": "3.0.0",
+        "ejs": "*",
+        "socket.io": "*",
+        "mongodb": "*",
+        "tense": "0.1.0"
+    },
+    "author": "Shi Ling Tai"
+}

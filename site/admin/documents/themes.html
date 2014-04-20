@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>(admin)First! - View Themes</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <h1>View Themes</h1>
+    <div>
+        <form id="form-add">
+            <h3>Add pairs:</h3>
+            <input type="text" name="keyword1" placeholder="panda"/>
+            <input type="text" name="keyword2" placeholder="dairy cow"/>
+            <input type="submit" value="Add"/>
+        </form>
+    </div>
+    <div>
+        <form id="form-get">
+            <h3>List suggestions for:</h3>
+            <input type="text" name="keyword" placeholder="panda"/>
+            <input type="submit" value="Go!"/>
+        </form>
+        <table id="table-themes" border="1">
+            <thead>
+                <tr><th>Keyword 1</th><th>Keyword 2</th><th>Weight</th><th>Edit</th></tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        $("#form-add").submit(function(){
+            var keyword1 = $(this).find("[name=keyword1]").val();
+            var keyword2 = $(this).find("[name=keyword2]").val();
+            $.ajax({
+                type: "PUT",
+                url: "/theme/" + keyword1 + "/" + keyword2,
+                success: function(data){
+                    console.log("added!")
+                }
+            });
+            return false;
+        });
+        $("#form-get").submit(function(){
+            var keyword = $(this).find("[name=keyword]").val();
+            $.ajax({
+                type: "GET",
+                url: "/theme/" + keyword + "/suggestions",
+                success: function(data){
+                    $("#table-themes tbody").html("");
+                    $.each(data,function(i, item){
+                        var tr = $("<tr>");
+                        tr.append($("<td>").text(item.keyword1));
+                        tr.append($("<td>").text(item.keyword2));
+                        tr.append($("<td>").text(item.weight));
+                        var deleteBtn = $("<button>")
+                            .text("Delete")
+                            .click(function(){deleteTheme(tr, item.keyword1,item.keyword2);});
+                        tr.append($("<td>").append(deleteBtn));
+                        $("#table-themes tbody").append(tr);
+                    });
+                }
+            });
+            return false;
+        });
+        function deleteTheme(tr, keyword1, keyword2){
+            $.ajax({
+                type: "DELETE",
+                url: "/theme/" + keyword1 + "/" + keyword2,
+                success: function(data){
+                    console.log("deleted!")
+                    tr.remove();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

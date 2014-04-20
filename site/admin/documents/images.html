@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>(admin)First! - View Images</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <h1>View Images</h1>
+    <div>
+        <form id="form-add">
+            <h3>Add images:</h3>
+            Keyword:
+            <input type="text" name="keyword" placeholder="panda"/><br/>
+            Bing Result:
+            <textarea name="results"></textarea>
+            <input type="submit" value="Add"/>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        $("#form-add").submit(function(e){
+            var keyword = $(this).find("[name=keyword]").val();
+            var results = $(this).find("[name=results]").val();
+            $.ajax({
+                type: "PUT",
+                url: "/image/" + keyword,
+                data: {
+                    "results": results
+                },
+                success: function(data){
+                    console.log("added!")
+                }
+            });
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
